@@ -16,4 +16,4 @@ def simple_parser(tokens, symbol_table, error_manager):
                 error_manager.add(f"Error semántico en asignación de {name}")
         else:
             error_manager.add(f"Error sintáctico cerca de {token[1]}")
-            i += 1
+        i += 1

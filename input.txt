@@ -1,0 +1,5 @@
+long int a = 5 + 3;
+char b = 'x';
+if (a > 2) {
+  b = 'y';
+}

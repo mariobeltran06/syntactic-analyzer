@@ -26,6 +26,10 @@ TOKEN_SPEC = [
     ('MISMATCH', r'.')
 ]
 
+KEYWORDS = {
+    'if', 'else', 'while', 'for', 'char', 'int', 'long', 'float', 'double', 'return'
+}
+
 token_regex = '|'.join(f'(?P<{name}>{regex})' for name, regex in TOKEN_SPEC)
 
 def lexer(code):
@@ -33,6 +37,8 @@ def lexer(code):
     for match in re.finditer(token_regex, code):
         kind = match.lastgroup
         value = match.group()
+        if kind == 'ID' and value in KEYWORDS:
+            kind = value.upper()  # Ej: 'if' -> 'IF', 'char' -> 'CHAR'
         if kind == 'SKIP' or kind == 'COMMENT':
             continue
         elif kind == 'MISMATCH':

@@ -22,7 +22,7 @@ TOKEN_SPEC = [
     ('RBRACE',   r'\}'),
     ('SEMICOLON',r';'),
     ('COMMENT',  r'//.*'),
-    ('SKIP',     r'[ \t\n]+'),
+    ('SKIP',     r'\s+'),
     ('MISMATCH', r'.')
 ]
 

@@ -15,14 +15,6 @@ An educational compiler developed in Python for the Automata and Compilers cours
 
 </div>
 
-<!-- Language Selector -->
-<div align="right">
-  <small>
-    <a href="#índice">🇪🇸 Español</a> | 
-    <a href="#table-of-contents">🇬🇧 English</a>
-  </small>
-</div>
-
 <a id="índice"></a>
 ## 📑 Índice / Table of Contents
 

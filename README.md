@@ -56,40 +56,6 @@ An educational compiler developed in Python for the Automata and Compilers cours
 
 ---
 
-<a id="table-of-contents"></a>
-## 📑 Table of Contents / Índice
-
-### 📋 Introduction / Introducción
-- [Key Features / Características Principales](#-características-principales--key-features)
-- [System Requirements / Requisitos del Sistema](#-requisitos--requirements)
-- [Installation / Instalación](#-instalación--installation)
-- [Execution / Ejecución](#-ejecución--execution)
-
-### 🛠️ Technical Features / Características Técnicas
-- [Lexical Analysis / Análisis Léxico](#análisis-léxico--lexical-analysis)
-- [Syntactic Analysis / Análisis Sintáctico](#análisis-sintáctico--syntactic-analysis)
-- [Type System / Sistema de Tipos](#sistema-de-tipos--type-system)
-- [Optimizations / Optimizaciones](#optimizaciones--optimizations)
-- [Code Generation / Generación de Código](#generación-de-código--code-generation)
-
-### 📚 Guides / Guías
-- [Usage Examples / Ejemplos de Uso](#-ejemplos-avanzados--advanced-examples)
-- [Error Handling / Manejo de Errores](#-manejo-de-errores--error-handling)
-- [Compilation Flow / Flujo de Compilación](#-flujo-de-compilación-detallado--detailed-compilation-flow)
-
-### 🤝 Contributing / Contribución
-- [Contribution Policy / Política de Contribución](#-política-de-contribución--contribution-policy)
-- [Code of Conduct / Código de Conducta](#-código-de-conducta--code-of-conduct)
-- [Report Issues / Reportar Problemas](#soporte-y-contacto--support-and-contact)
-
-### 📚 Documentation / Documentación
-- [Technical Documentation / Documentación Técnica](#documentación-técnica--technical-documentation)
-- [Quick References / Referencias Rápidas](#guías-de-referencia-rápida--quick-reference-guides)
-- [Learning Resources / Recursos de Aprendizaje](#recursos-de-aprendizaje--learning-resources)
-
----
-
-
 ## 🎯 Características Principales / Key Features
 
 ### 📊 Tipos de Datos / Data Types

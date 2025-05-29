@@ -10,6 +10,7 @@ TOKEN_SPEC = [
     ('PLUS',     r'\+'),
     ('MINUS',    r'-'),
     ('MULT',     r'\*'),
+    ('COMMENT',  r'//.*'),
     ('DIV',      r'/'),
     ('GT',       r'>'),
     ('LT',       r'<'),
@@ -21,7 +22,6 @@ TOKEN_SPEC = [
     ('LBRACE',   r'\{'),
     ('RBRACE',   r'\}'),
     ('SEMICOLON',r';'),
-    ('COMMENT',  r'//.*'),
     ('SKIP',     r'\s+'),
     ('MISMATCH', r'.')
 ]
@@ -40,7 +40,7 @@ def lexer(code):
         if kind == 'ID' and value in KEYWORDS:
             kind = value.upper()  # Ej: 'if' -> 'IF', 'char' -> 'CHAR'
         if kind == 'SKIP' or kind == 'COMMENT':
-            continue
+            continue  # Ignorar espacios y comentarios
         elif kind == 'MISMATCH':
             raise SyntaxError(f'Carácter inesperado: {value}')
         tokens.append((kind, value))

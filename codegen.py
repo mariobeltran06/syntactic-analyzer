@@ -26,6 +26,10 @@ class CodeGenerator:
         if op is None:
             operand_code(left, "R16")
             return "R16"
+        if op == 'NOT':
+            operand_code(left, "R16")
+            self.emit("COM R16")  # Complemento a uno (NOT bit a bit)
+            return "R16"
         operand_code(left, "R16")
         operand_code(right, "R17")
         if op == '+':
@@ -37,6 +41,10 @@ class CodeGenerator:
         elif op == '/':
             self.emit("; División: resultado en R0, R1 tras MUL")
             self.emit("; (Implementar división real si es necesario)")
+        elif op == 'AND':
+            self.emit("AND R16, R17")
+        elif op == 'OR':
+            self.emit("OR R16, R17")
         return "R16"
 
     def gen_assign_expr(self, var, left, op=None, right=None):
@@ -68,21 +76,30 @@ class CodeGenerator:
     def gen_if(self, cond_left, cond_op, cond_right, label_else):
         # Soporte para if con else: salta a label_else si la condición es falsa
         self.emit(f"; if ({cond_left} {cond_op} {cond_right})")
-        self.emit(f"LDI R16, {cond_left}")
-        self.emit(f"LDI R17, {cond_right}")
-        # cond_op puede ser el nombre del token: 'GT', 'LT', 'EQ', 'NE'
-        if cond_op == 'GT':
+        # Si cond_left es una variable temporal (resultado de expresión booleana)
+        if cond_left.startswith('__tmp_cond') or cond_right == '0':
+            self.emit(f"LDS R16, {cond_left}")
+            self.emit(f"LDI R17, 0")
             self.emit("CP R16, R17")
-            self.emit(f"BRLE {label_else}")
-        elif cond_op == 'LT':
-            self.emit("CP R16, R17")
-            self.emit(f"BRGE {label_else}")
-        elif cond_op == 'EQ':
-            self.emit("CP R16, R17")
-            self.emit(f"BRNE {label_else}")
-        elif cond_op == 'NE':
-            self.emit("CP R16, R17")
-            self.emit(f"BREQ {label_else}")
+            if cond_op == 'EQ':
+                self.emit(f"BRNE {label_else}")
+            else:  # NE
+                self.emit(f"BREQ {label_else}")
+        else:
+            self.emit(f"LDI R16, {cond_left}")
+            self.emit(f"LDI R17, {cond_right}")
+            if cond_op == 'GT':
+                self.emit("CP R16, R17")
+                self.emit(f"BRLE {label_else}")
+            elif cond_op == 'LT':
+                self.emit("CP R16, R17")
+                self.emit(f"BRGE {label_else}")
+            elif cond_op == 'EQ':
+                self.emit("CP R16, R17")
+                self.emit(f"BRNE {label_else}")
+            elif cond_op == 'NE':
+                self.emit("CP R16, R17")
+                self.emit(f"BREQ {label_else}")
 
     def gen_else_jump(self, label_endif):
         self.emit(f"RJMP {label_endif}")

@@ -1,3 +1,5 @@
-
 __pycache__
+errors.txt
+errors.err
+output.asm
 *.pyc
